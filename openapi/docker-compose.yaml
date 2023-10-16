@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  swagger-ui:
+    image: swaggerapi/swagger-ui:v4.1.2
+    container_name: "swagger-ui"
+    ports:
+      - '8081:8080'
+    volumes:
+      - ./compiled.yaml:/compiled.yaml
+    environment:
+      SWAGGER_JSON: /compiled.yaml
+
+  swagger-editor:
+    image: swaggerapi/swagger-editor:v4.0.2
+    container_name: "swagger-editor"
+    ports:
+      - '8082:8080'
+
+  swagger-api:
+    image: stoplight/prism:4.6.1
+    container_name: "swagger-mock-api"
+    ports:
+      - '8083:4041'
+    command: mock -h 0.0.0.0 /compiled.yaml
+    volumes:
+      - ./compiled.yaml:/compiled.yaml
+    networks:
+      swagger_network:
+        aliases:
+          - local.swagger.apisprout

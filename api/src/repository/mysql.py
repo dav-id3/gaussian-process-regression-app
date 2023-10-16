@@ -1,17 +1,16 @@
 """mysql repository"""
 import textwrap
 from abc import ABCMeta, abstractmethod
-from typing import AsyncGenerator, List, Dict
+from typing import AsyncGenerator, Dict, List
 
 import sqlalchemy
+import src.model as model
+import src.schema.repository.mysql as mysqlschema
+import src.schema.service.ml as mlschema
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.sql import text
-
-import src.model as model
 from src.configuration.env import ENV
-import src.schema.repository.mysql as mysqlschema
-import src.schema.service.ml as mlschema
 
 
 class Interface(metaclass=ABCMeta):
@@ -61,25 +60,30 @@ class Interface(metaclass=ABCMeta):
         origin = f"{protocol}://{identity}@{host}"
 
         return origin + pathname + qs
-    @abstractmethod
-    def update_predicted_next_value(self, session: Session, req: mlschema.PredictedData) -> None:
-        """
-        update predicted next value
 
+    @abstractmethod
+    def update_predicted_data(
+        self, session: Session, req: mlschema.PredictedData
+    ) -> None:
+        """
+        Update predicted data
         Args:
             req (mysqlschema.record): record
         Returns:
             None
         """
 
+
 class Repository(Interface):
     """class for mysql repository"""
-    
-    def update_predicted_next_value(self, session: Session, req: mlschema.PredictedData) -> None:
+
+    def update_predicted_data(
+        self, session: Session, req: mlschema.PredictedData
+    ) -> None:
         sql = textwrap.dedent(
             f"""
             INSERT INTO
-                {model.Data.__tablename__}
+                {model.PredictedData.__tablename__}
                 (
                     `value`,
                     `time`,
@@ -113,5 +117,6 @@ class Repository(Interface):
             session.commit()
         except sqlalchemy.exc.IntegrityError:
             session.rollback()
-            raise mysqlschema.InsertionDBError("mysql.update_predicted_next_value: insertion error")
-
+            raise mysqlschema.InsertionDBError(
+                "mysql.update_predicted_next_value: insertion error"
+            )

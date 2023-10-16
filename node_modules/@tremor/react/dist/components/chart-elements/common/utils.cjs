@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.constructCategories=(t,e)=>{if(!e)return[];const r=new Set;return t.forEach((t=>{r.add(t[e])})),Array.from(r)},exports.constructCategoryColors=(t,e)=>{const r=new Map;return t.forEach(((t,o)=>{r.set(t,e[o])})),r},exports.getYAxisDomain=(t,e,r)=>[t?"auto":null!=e?e:0,null!=r?r:"auto"];

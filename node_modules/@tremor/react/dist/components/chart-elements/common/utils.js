@@ -1,0 +1,1 @@
+const r=(r,t)=>{const n=new Map;return r.forEach(((r,o)=>{n.set(r,t[o])})),n},t=(r,t,n)=>[r?"auto":null!=t?t:0,null!=n?n:"auto"],n=(r,t)=>{if(!t)return[];const n=new Set;return r.forEach((r=>{n.add(r[t])})),Array.from(n)};export{n as constructCategories,r as constructCategoryColors,t as getYAxisDomain};

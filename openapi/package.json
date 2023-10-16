@@ -1,0 +1,16 @@
+{
+  "name": "openapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "combine": "./node_modules/.bin/multi-file-swagger -o yaml ./index.yaml > ./compiled.yaml",
+    "validate": "./node_modules/.bin/swagger-cli validate ./compiled.yaml"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "multi-file-swagger": "^2.3.0",
+    "swagger-cli": "^4.0.4"
+  }
+}

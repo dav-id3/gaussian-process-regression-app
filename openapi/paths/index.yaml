@@ -1,0 +1,3 @@
+# get prediction data
+/ml/predict:
+  $ref: ./ml/getPrediction.yaml

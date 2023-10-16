@@ -52,10 +52,6 @@ db.start:
 		--publish $(MYSQL_PORT):3306 \
 		$(DATABASE_CONTAINER)
 
-.PHONY: db.exec
-db.exec:
-	@docker exec -it $(DATABASE_CONTAINER) /bin/bash
-
 ## Migration for database
 .PHONY: migration.build
 migration.build:

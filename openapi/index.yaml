@@ -1,0 +1,22 @@
+openapi: "3.0.2"
+info:
+  version: 0.0.1
+  title: gaussian process regression api
+
+paths:
+  $ref: ./paths/index.yaml
+
+components:
+  schemas:
+    $ref: ./components/schemas/index.yaml
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionId
+
+servers:
+  - url: "{server}"
+    variables:
+      server:
+        default: http://localhost:8000

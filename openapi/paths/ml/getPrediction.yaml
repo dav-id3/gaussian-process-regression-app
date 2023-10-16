@@ -1,0 +1,13 @@
+delete:
+  tags:
+    - ml
+  summary: get prediction data
+  description: get predicted next data and predicted data
+  
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ml.getPredictionResponse'

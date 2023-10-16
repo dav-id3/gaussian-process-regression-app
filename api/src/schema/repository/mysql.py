@@ -1,10 +1,12 @@
 """schema for mysql"""
-from pydantic import BaseModel, Field
 from typing import Optional
+
+from pydantic import BaseModel, Field
 
 
 class InsertionDBError(Exception):
     """Cannnot insert data into mysql"""
+
 
 class Record(BaseModel):
     """record data"""
@@ -17,7 +19,8 @@ class Record(BaseModel):
     description: str = Field(..., description="description")
     is_spending: bool = Field(..., description="is_spending")
     repeat_frequency: Optional[str] = Field(
-        None, description="frequency of repeated record in {daily, weekly, monthly, None}"
+        None,
+        description="frequency of repeated record in {daily, weekly, monthly, None}",
     )
     date: str = Field(..., description="date")
     is_deleted: bool = Field(..., description="is_deleted")

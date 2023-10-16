@@ -1,0 +1,3 @@
+# ml
+ml.getPredictionResponse:
+  $ref: ./ml/getPredictionResponse.yaml
