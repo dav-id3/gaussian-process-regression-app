@@ -1,0 +1,11 @@
+{
+  "python.formatting.blackPath": "/Users/dav_id3/Library/Caches/pypoetry/virtualenvs/gaussian-process-regression-app-4r4ViInX-py3.11/bin/black",
+  "python.formatting.provider": "black",
+  "[python]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+  }
+  },
+}

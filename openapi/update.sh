@@ -1,0 +1,1 @@
+npm run combine && npm run validate

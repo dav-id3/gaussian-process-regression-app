@@ -1,7 +1,7 @@
-from .base import BaseMySQL, Base
+from .base import Base, BaseMySQL
 
 
-class PredictedNextValue(BaseMySQL, Base):
+class PredictedData(BaseMySQL, Base):
     """predicted value entity"""
 
-    __tablename__ = "predicted_next_value"
+    __tablename__ = "predicted_data"
