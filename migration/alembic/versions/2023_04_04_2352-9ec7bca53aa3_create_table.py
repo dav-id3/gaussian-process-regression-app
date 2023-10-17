@@ -21,8 +21,8 @@ def upgrade() -> None:
     # TBU for initial table creation on predicted next value
     op.create_table(
         TABLE_NAME,
-        sa.Column("value", sa.Float, nullable=False),
-        sa.Column("time", sa.String(length=15), primary_key=True),
+        sa.Column("y_value", sa.Float, nullable=False),
+        sa.Column("x_value", sa.Float, nullable=False, primary_key=True),
         sa.Column("lower_bound", sa.Float, nullable=False),
         sa.Column("upper_bound", sa.Float, nullable=False),
     )

@@ -7,29 +7,29 @@ from src.schema.service import ml as svcschema
 
 
 class InputData(BaseModel):
-    value: float = Field(..., description="predicted value")
-    time: datetime = Field(..., description="time")
+    y_value: float = Field(..., description="predicted value")
+    x_value: float = Field(..., description="x value")
 
     def to_service(self) -> svcschema.InputData:
         return svcschema.InputData(
-            value=self.value,
-            time=self.time,
+            y_value=self.y_value,
+            x_value=self.x_value,
         )
 
 
 class PredictedData(BaseModel):
     """predicted data"""
 
-    value: float = Field(..., description="predicted value")
-    time: datetime = Field(..., description="time")
+    y_value: float = Field(..., description="predicted value")
+    x_value: float = Field(..., description="x value")
     lower_bound: float = Field(..., description="lower bound of predicted value")
     upper_bound: float = Field(..., description="upper bound of predicted value")
 
     @staticmethod
     def from_service(service_predicted_data: svcschema.PredictedData):
         return PredictedData(
-            value=service_predicted_data.value,
-            time=service_predicted_data.time,
+            y_value=service_predicted_data.y_value,
+            x_value=service_predicted_data.x_value,
             lower_bound=service_predicted_data.lower_bound,
             upper_bound=service_predicted_data.upper_bound,
         )

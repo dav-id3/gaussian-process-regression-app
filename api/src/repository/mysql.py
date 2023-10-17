@@ -25,7 +25,7 @@ class Interface(metaclass=ABCMeta):
         self.session = sessionmaker(autocommit=False, autoflush=False, bind=self.engine)
 
     async def get_session(self) -> AsyncGenerator:
-        """dependent db session creation"""
+        """Dependent db session creation"""
         session = self.session()
 
         try:
@@ -36,7 +36,6 @@ class Interface(metaclass=ABCMeta):
     def __build_database_url(self) -> str:
         """
         build Python MySQL driver specific database url string
-
         Returns:
             str: database uri string
         Examples:
@@ -68,7 +67,7 @@ class Interface(metaclass=ABCMeta):
         """
         Update predicted data
         Args:
-            req (mysqlschema.record): record
+            req (mlschema.PredictedData): data to save
         Returns:
             None
         """
@@ -118,5 +117,5 @@ class Repository(Interface):
         except sqlalchemy.exc.IntegrityError:
             session.rollback()
             raise mysqlschema.InsertionDBError(
-                "mysql.update_predicted_next_value: insertion error"
+                "mysql.update_predicted_data: insertion error"
             )
