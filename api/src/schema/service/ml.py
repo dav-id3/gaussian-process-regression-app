@@ -15,14 +15,14 @@ class Prediction(BaseModel):
 class InputData(BaseModel):
     """predicted data"""
 
-    value: float = Field(..., description="predicted value")
-    time: datetime = Field(..., description="time")
+    y_value: float = Field(..., description="predicted value")
+    x_value: float = Field(..., description="x value")
 
 
 class PredictedData(BaseModel):
     """predicted data"""
 
-    value: float = Field(..., description="predicted value")
-    time: datetime = Field(..., description="time")
+    y_value: float = Field(..., description="predicted value")
+    x_value: float = Field(..., description="x value")
     lower_bound: float = Field(..., description="lower bound of predicted value")
     upper_bound: float = Field(..., description="upper bound of predicted value")

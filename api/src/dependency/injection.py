@@ -1,8 +1,8 @@
-"""dependency injencton"""
-import src.service.ml as ml
+"""Dependency injencton"""
 from src.configuration.env import new_env
 from src.model import BaseMySQL
 from src.repository import mysql
+from src.service import ml
 
 env = new_env()
 
